@@ -9,17 +9,29 @@ import java.sql.SQLException;
 
 public class ProductTypeTest {
 
+    //        con = Database.getInstance().getConnection();
+//        try(PreparedStatement ps2 =  con.prepareStatement("select * from stajyer.product_type");){
+//            System.out.println("ProductTypeTest listele1");
+//            rs = ps.executeQuery();
+//            while (rs.next()){
+//                System.out.println("id :"+rs.getLong("id") + "Name :"+rs.getString("name"));
+//            }
+//        }catch (Exception ex){
+//
+//        }
+
     //Exception handling
     @Test
     public void listele()  {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+
         try {
             con = Database.getInstance().getConnection();
             ps = con.prepareStatement("select * from stajyer.product_type");
             rs = ps.executeQuery();
-            System.out.println("ProductTypeTest listele");
+            System.out.println("ProductTypeTest listele2");
             while (rs.next()){
                 System.out.println("id :"+rs.getLong("id") + "Name :"+rs.getString("name"));
             }
