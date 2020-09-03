@@ -9,6 +9,8 @@ import java.sql.SQLException;
 
 public class ProductTypeTest {
 
+    private ProductTypeDao productTypeDao = new ProductTypeDao();
+
     //        con = Database.getInstance().getConnection();
 //        try(PreparedStatement ps2 =  con.prepareStatement("select * from stajyer.product_type");){
 //            System.out.println("ProductTypeTest listele1");
@@ -58,6 +60,7 @@ public class ProductTypeTest {
     public void olustur(){
         Connection con = null;
         con = Database.getInstance().getConnection();
+       // productTypeDao.getProductTypeList();
         //Veritabanına bağlantı
         //Insert into ProductType
     }
