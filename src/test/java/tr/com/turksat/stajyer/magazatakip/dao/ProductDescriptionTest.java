@@ -11,7 +11,7 @@ public class ProductDescriptionTest {
         Connection con = null;
         con = Database.getInstance().getConnection();
 
-        System.out.println("test");
+        System.out.println("test2");
 
     }
 
