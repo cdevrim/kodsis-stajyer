@@ -17,3 +17,20 @@ public class MarkaTipi {
         this.markatipi = markatipi;
     }
 }
+
+
+/*
+public class ProductTypeFeature {
+    private String value;
+    private int productTypeId;
+    private int featureId;
+
+
+
+    public ProductTypeFeature()
+    {
+
+    }
+
+
+}*/

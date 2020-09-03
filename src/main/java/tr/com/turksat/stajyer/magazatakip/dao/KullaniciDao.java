@@ -2,6 +2,7 @@ package tr.com.turksat.stajyer.magazatakip.dao;
 
 import tr.com.turksat.stajyer.magazatakip.domain.Kullanici;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +31,7 @@ public class KullaniciDao {
                 return true;
             }
             else {
+                JOptionPane.showMessageDialog(null, "Login Failed, please try again!");
                 return false;
             }
         } catch (Exception ex) {
