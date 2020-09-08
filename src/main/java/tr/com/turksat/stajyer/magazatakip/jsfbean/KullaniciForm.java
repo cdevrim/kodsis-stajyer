@@ -118,11 +118,12 @@ public class KullaniciForm implements Serializable {
 
     //GİRİŞ YAP
     public String kullaniciGiris() {
-//        KullaniciService service = new KullaniciService();
-//        if (service.kullaniciGiris(kullanici)) {
-//            return "anaekran/anaekran";
-//        }
-        return "uruntanimi";
+        KullaniciService service = new KullaniciService();
+        if (service.kullaniciGiris(kullanici)) {
+            //return "uruntanimi";
+            return "feature";
+        }
+        return "giris";
     }
 
     public String urunTipiEkle() {

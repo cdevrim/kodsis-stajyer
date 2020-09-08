@@ -10,6 +10,51 @@
 </head>
 
 <body onload="chechBrowser()">
+
+<h:form>
+    <h:dataTable value ="#{customerController.clist}" var="cust">
+        <h:column>
+            <f:facet name="header">ID</f:facet>
+             #{cust.id}
+        </h:column>
+        <h:column>
+            <f:facet name="header">FIRST NAME</f:facet>
+            #{cust.first_name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">LAST NAME</f:facet>
+            #{cust.last_name}
+        </h:column>
+        <h:column>
+            <f:facet name="header">EMAIL</f:facet>
+            #{cust.email}
+        </h:column>
+        <h:column>
+            <f:facet name="header">CREDIT CARD</f:facet>
+            #{cust.credit_card}
+        </h:column>
+        <h:column>
+            <f:facet name="header">BIRTH DATE</f:facet>
+            #{cust.birth_date}
+        </h:column>
+        <h:column>
+            <f:facet name="header">GENDER</f:facet>
+            #{cust.gender}
+        </h:column>
+        <h:column>
+            <f:facet name="header">PHONE</f:facet>
+            #{cust.phone}
+        </h:column>
+        <h:column>
+            <f:facet name="header">CREATE DATE</f:facet>
+            #{cust.create_date}
+        </h:column>
+        <h:column>
+            <f:facet name="header">CREATE USER ID</f:facet>
+            #{cust.create_user_id}
+        </h:column>
+   </h:dataTable>
+</h:form>
 <p>Redirecting....</p>
 
 </body>

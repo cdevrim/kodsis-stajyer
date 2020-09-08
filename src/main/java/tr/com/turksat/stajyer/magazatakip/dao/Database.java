@@ -17,6 +17,7 @@ public class Database {
         return new Database();
     }
 
+    //Bu kısım JDBC ile veritabanına bağlnan kısım, yani OPEN connetion kavramı
     public  Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");
