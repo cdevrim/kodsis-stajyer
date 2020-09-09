@@ -6,36 +6,42 @@ import java.time.LocalDateTime;
 public class ProductType {
 
     private Long id;
-    private Date create_date;
-    private Long create_user_id;
-    private String product_type_name;
+    private Date createDate;
+    private Long createUserId;
+    private String productTypeName;
 
-    public ProductType(Long id, Date create_date, Long create_user_id, String product_type_name) {
+
+    public ProductType() {
+
+
+    }
+
+    public ProductType(Long id, Date createDate, Long createUserId, String productTypeName) {
         this.id = id;
-        this.create_date = create_date;
-        this.create_user_id = create_user_id;
-        this.product_type_name = product_type_name;
+        this.createDate = createDate;
+        this.createUserId = createUserId;
+        this.productTypeName = productTypeName;
     }
 
     public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
 
-    public Date getCreate_date() {return create_date;}
-    public void setCreate_date(Date create_date) {this.create_date = create_date; }
+    public Date getCreateDate() {return createDate;}
+    public void setCreateDate(Date createDate) {this.createDate = createDate;}
 
-    public Long getCreate_user_id() {return create_user_id;}
-    public void setCreate_user_id(Long create_user_id) {this.create_user_id = create_user_id;}
+    public Long getCreateUserId() {return createUserId;}
+    public void setCreateUserId(Long createUserId) {this.createUserId = createUserId;}
 
-    public String getProduct_type_name() {return product_type_name;}
-    public void setProduct_type_name(String product_type_name) {this.product_type_name = product_type_name;}
+    public String getProductTypeName() {return productTypeName;}
+    public void setProductTypeName(String productTypeName) {this.productTypeName = productTypeName;}
 
     @Override
     public String toString() {
         return "ProductType{" +
                 "id=" + id +
-                ", create_date=" + create_date +
-                ", create_user_id=" + create_user_id +
-                ", product_type_name='" + product_type_name + '\'' +
+                ", createDate=" + createDate +
+                ", createUserId=" + createUserId +
+                ", productTypeName='" + productTypeName + '\'' +
                 '}';
     }
 }

@@ -30,15 +30,13 @@ public class CustomerDAO {
 
                  while(rs.next()){
 
-                  Customer tmp = new Customer(rs.getLong("id") , rs.getString("first_name") , rs.getString("last_name") , rs.getString("email"), rs.getInt("credit_card"),rs.getDate("birth_date"), rs.getString("gender"),rs.getString("phone"),  rs.getDate("create_date"),rs.getLong("create_user_id"));
+                  Customer tmp = new Customer(rs.getLong("id") , rs.getString("firstName") , rs.getString("lastName") , rs.getString("email"), rs.getInt("creditCard"),rs.getDate("birthDate"), rs.getString("gender"),rs.getString("phone"),  rs.getDate("createDate"),rs.getLong("createUserId"));
                   clist.add(tmp);
 
                  }
              }catch(SQLException ex) {
                 ex.printStackTrace();
             }
-
-
 
      return clist;
     }
@@ -49,8 +47,39 @@ public class CustomerDAO {
 
         try{
             Statement st= c.createStatement();
-            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getFirst_name()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getFirstName()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getLastName()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getEmail()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getGender()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getPhone()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getBirthDate()+"') ");
+            st.executeUpdate("INSERT INTO CUSTOMER(first_name) VALUES ('"+customer.getCreditCard()+"') ");
 
+        }catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void delete(Customer cust) {
+        Database db = new Database();
+        Connection c = db.getConnection();
+
+        try{
+            Statement st= c.createStatement();
+            st.executeUpdate("DELETE FROM CUSTOMER WHERE ID="+cust.getId());
+
+        }catch(SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void update(Customer customer) {
+        Database db = new Database();
+        Connection c = db.getConnection();
+
+        try{
+            Statement st= c.createStatement();
+            st.executeUpdate("update customer set name='"+customer.getFirstName()+"'where id="+customer.getId());
 
         }catch(SQLException ex) {
             ex.printStackTrace();

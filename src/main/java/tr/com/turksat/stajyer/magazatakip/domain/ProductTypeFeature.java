@@ -7,18 +7,22 @@ public class ProductTypeFeature {
 
     private Long id;
     private String value;
-    private Date create_date;
-    private Long create_user_id;
-    private Long product_type_id;
-    private Long feature_id;
+    private Date createDate;
+    private Long createUserId;
+    private Long productTypeId;
+    private Long featureId;
 
-    public ProductTypeFeature(Long id, String value, Date create_date, Long create_user_id, Long product_type_id, Long feature_id) {
+
+    public ProductTypeFeature() {
+    }
+
+    public ProductTypeFeature(Long id, String value, Date createDate, Long createUserId, Long productTypeId, Long featureId) {
         this.id = id;
         this.value = value;
-        this.create_date = create_date;
-        this.create_user_id = create_user_id;
-        this.product_type_id = product_type_id;
-        this.feature_id = feature_id;
+        this.createDate = createDate;
+        this.createUserId = createUserId;
+        this.productTypeId = productTypeId;
+        this.featureId = featureId;
     }
 
     public Long getId() {return id;}
@@ -27,27 +31,27 @@ public class ProductTypeFeature {
     public String getValue() {return value;}
     public void setValue(String value) {this.value = value;}
 
-    public Date getCreate_date() {return create_date;}
-    public void setCreate_date(Date create_date) {this.create_date = create_date;}
+    public Date getCreateDate() {return createDate;}
+    public void setCreateDate(Date createDate) {this.createDate = createDate;}
 
-    public Long getCreate_user_id() {return create_user_id;}
-    public void setCreate_user_id(Long create_user_id) {this.create_user_id = create_user_id;}
+    public Long getCreateUserId() {return createUserId;}
+    public void setCreateUserId(Long createUserId) {this.createUserId = createUserId;}
 
-    public Long getProduct_type_id() {return product_type_id;}
-    public void setProduct_type_id(Long product_type_id) {this.product_type_id = product_type_id;}
+    public Long getProductTypeId() {return productTypeId;}
+    public void setProductTypeId(Long productTypeId) {this.productTypeId = productTypeId;}
 
-    public Long getFeature_id() {return feature_id;}
-    public void setFeature_id(Long feature_id) {this.feature_id = feature_id;}
+    public Long getFeatureId() {return featureId;}
+    public void setFeatureId(Long featureId) {this.featureId = featureId;}
 
     @Override
     public String toString() {
         return "ProductTypeFeature{" +
                 "id=" + id +
                 ", value='" + value + '\'' +
-                ", create_date=" + create_date +
-                ", create_user_id=" + create_user_id +
-                ", product_type_id=" + product_type_id +
-                ", feature_id=" + feature_id +
+                ", createDate=" + createDate +
+                ", createUserId=" + createUserId +
+                ", productTypeId=" + productTypeId +
+                ", featureId=" + featureId +
                 '}';
     }
 }

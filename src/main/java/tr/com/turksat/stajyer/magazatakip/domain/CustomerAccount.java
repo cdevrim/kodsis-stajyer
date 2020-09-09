@@ -5,44 +5,45 @@ import java.time.LocalDateTime;
 
 public class CustomerAccount {
     private Long id;
-    private Long customer_id;
-    private Date create_date;
-    private Long create_user_id;
-    private String billing_address;
+    private Long customerId;
+    private Date createDate;
+    private Long createUserId;
+    private String billingAddress;
 
-    public CustomerAccount(Long id, Long customer_id, Date create_date, Long create_user_id, String billing_address) {
-        this.id = id;
-        this.customer_id = customer_id;
-        this.create_date = create_date;
-        this.create_user_id = create_user_id;
-        this.billing_address = billing_address;
+    public CustomerAccount() {
     }
 
-    public Long getId() {return id; }
+    public CustomerAccount(Long id, Long customerId, Date createDate, Long createUserId, String billingAddress) {
+        this.id = id;
+        this.customerId = customerId;
+        this.createDate = createDate;
+        this.createUserId = createUserId;
+        this.billingAddress = billingAddress;
+    }
+
+    public Long getId() {return id;}
     public void setId(Long id) {this.id = id;}
 
+    public Long getCustomerId() {return customerId;}
+    public void setCustomerId(Long customerId) {this.customerId = customerId;}
 
-    public Long getCustomer_id() {return customer_id;}
-    public void setCustomer_id(Long customer_id) {this.customer_id = customer_id;}
+    public Date getCreateDate() {return createDate;}
+    public void setCreateDate(Date createDate) {this.createDate = createDate;}
 
-    public Date getCreate_date() {return create_date;}
-    public void setCreate_date(Date create_date) {this.create_date = create_date;}
+    public Long getCreateUserId() {return createUserId;}
+    public void setCreateUserId(Long createUserId) {this.createUserId = createUserId;}
 
-
-    public Long getCreate_user_id() {return create_user_id;}
-    public void setCreate_user_id(Long create_user_id) {this.create_user_id = create_user_id;}
-
-    public String getBilling_address() {return billing_address;}
-    public void setBilling_address(String billing_address) {this.billing_address = billing_address;}
+    public String getBillingAddress() {return billingAddress;}
+    public void setBillingAddress(String billingAddress) {this.billingAddress = billingAddress;}
 
     @Override
     public String toString() {
         return "CustomerAccount{" +
                 "id=" + id +
-                ", customer_id=" + customer_id +
-                ", create_date=" + create_date +
-                ", create_user_id=" + create_user_id +
-                ", billing_address='" + billing_address + '\'' +
+                ", customerId=" + customerId +
+                ", createDate=" + createDate +
+                ", createUserId=" + createUserId +
+                ", billingAddress='" + billingAddress + '\'' +
                 '}';
     }
 }
