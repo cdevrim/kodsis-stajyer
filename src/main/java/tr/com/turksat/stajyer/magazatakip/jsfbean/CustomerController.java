@@ -32,7 +32,7 @@ public class CustomerController implements Serializable {
 
    public String delete(Customer cust){
 
-     this.getCdao().delete(cust);
+     this.getCdao().delete(cust.getId());
              return "index";
    }
 

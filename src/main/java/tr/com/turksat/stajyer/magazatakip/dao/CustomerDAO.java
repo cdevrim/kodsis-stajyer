@@ -1,44 +1,50 @@
 package tr.com.turksat.stajyer.magazatakip.dao;
 
 import tr.com.turksat.stajyer.magazatakip.domain.Customer;
-import tr.com.turksat.stajyer.magazatakip.domain.Feature;
 
-import java.sql.*;
+import javax.xml.crypto.Data;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.PreparedStatement;
-import java.sql.Connection;
-
-import java.time.LocalDateTime;
-import java.util.Date;
 
 
 public class CustomerDAO {
 
+
+    public CustomerDAO(){
+
+    }
+
+
     public List<Customer> getCustomer(){
+
+        //Değişkenler try block içerisine genelde oluşturulmaz.
         Connection c = null;
+        ResultSet rs = null;
         PreparedStatement ps = null;
         List<Customer> customerList = new ArrayList<>();
 
         try {
 
             c = Database.getInstance().getConnection();
-            ps = c.prepareStatement(
-                    "select * from stajyer.customer");
-            ResultSet rs = ps.executeQuery();
+            ps = c.prepareStatement("select * from stajyer.customer");
+            rs = ps.executeQuery();
             while (rs.next())
             {
                 Customer customer = new Customer();
                 customer.setId(rs.getLong("id"));
-                customer.setFirstName(rs.getString("firstName"));
-                customer.setLastName(rs.getString("lastName"));
+                customer.setFirstName(rs.getString("first_name"));
+                customer.setLastName(rs.getString("last_name"));
                 customer.setEmail(rs.getString("email"));
-                customer.setCreditCard(rs.getInt("creditCard"));
-                customer.setBirthDate(rs.getDate("birthDate"));
+                customer.setCreditCard(rs.getInt("credit_card"));
+                customer.setBirthDate(rs.getDate("birth_date"));
                 customer.setGender(rs.getString("gender"));
                 customer.setPhone(rs.getString("phone"));
-                customer.setCreateDate(rs.getDate("createDate"));
-                customer.setCreateUserId(rs.getLong("createUserId"));
+                customer.setCreateDate(rs.getDate("create_date"));
+                customer.setCreateUserId(rs.getLong("create_user_id"));
 
                 customerList.add(customer);
             }
@@ -47,57 +53,97 @@ public class CustomerDAO {
             System.out.println("hatalı giriş "+ex.getLocalizedMessage());
             return customerList;
         } finally {
-            Database.close(c);
+            //ilk oluşturulan son kapatılır
+            try {
+                rs.close();
+                ps.close();
+                Database.close(c);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
         }
 
         return  customerList;
     }
 
+
     public void insert(Customer customer) {
-        Database db = new Database();
-        Connection c = db.getConnection();
-        PreparedStatement preparedStatement;
+
+        Connection c = Database.getInstance().getConnection();
+        PreparedStatement ps;
+        String sqlInsert = "insert into stajyer.customer(first_name,last_name,email,credit_card,birth_date,gender,phone,create_date,create_user_id)\n ";
+        sqlInsert += " values (?,?,?,?,?,?,?,?,?); \n";
 
         try{
 
+            ps = c.prepareStatement(sqlInsert);
+            //Burada parametre set ederken veritabanındaki tiplere(veri tipi) göre set etmen önemli,
+            //birt_date date tipinde
+            // bak hepsnin sırası değişti. onu düzelltik
+            ps.setString(1,customer.getFirstName());
+            ps.setString(2,customer.getLastName());
+            ps.setString(3,customer.getEmail());
+            ps.setInt(4,customer.getCreditCard());
+            ps.setDate(5,new java.sql.Date(customer.getBirthDate().getTime()));
+            ps.setString(6,customer.getGender());
+            ps.setString(7,customer.getPhone());
+            ps.setTimestamp(8,new java.sql.Timestamp(customer.getCreateDate().getTime()));
+            ps.setLong(9,customer.getCreateUserId());
 
-            c.prepareStatement("insert into stajyer.customer(first_name,last_name,email,credit_card,birth_date,gender,phone,create_date,create_user_ıd)" +
-                    "values ('"+customer.getFirstName()+"'), ('"+customer.getLastName()+"'),('"+customer.getEmail()+"'), ('"+customer.getCreditCard()+"'), ('"+customer.getBirthDate()+"'), ('"+customer.getGender()+"'), ('"+customer.getPhone()+"'), ('"+customer.getCreateDate()+"'), ('"+customer.getCreateUserId()+"'),");
-
-
-
+            ps.executeUpdate();
 
         }catch(SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void delete(Customer cust) {
-        Database db = new Database();
-        Connection c = db.getConnection();
-        PreparedStatement preparedStatement;
+    public void delete(Long customerId) {
+
+        Connection c = Database.getInstance().getConnection();
+        PreparedStatement ps = null;
 
         try{
 
-            c.prepareStatement("DELETE FROM CUSTOMER WHERE ID="+cust.getId());
+           ps = c.prepareStatement("DELETE FROM stajyer.CUSTOMER WHERE ID = ?");
+           ps.setLong(1,customerId);
+           ps.executeUpdate();
 
         }catch(SQLException ex) {
             ex.printStackTrace();
+        }finally {
+            try {
+                ps.close();
+                Database.close(c);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 
     public void update(Customer customer) {
-        Database db = new Database();
-        Connection c = db.getConnection();
-        PreparedStatement preparedStatement;
+
+        Connection c = Database.getInstance().getConnection();
+        PreparedStatement ps = null;
 
         try{
 
-            c.prepareStatement("update customer set first_name='"+customer.getFirstName()+"'where id="+customer.getId());
+            ps = c.prepareStatement("update customer set first_name= ?, last_name = ? where id= ?");
+            ps.setString(1,customer.getFirstName());
+            ps.setString(2,customer.getLastName());
+            ps.setLong(3,customer.getId());
 
+            ps.executeUpdate();
 
         }catch(SQLException ex) {
             ex.printStackTrace();
+        }finally {
+            try {
+                ps.close();
+                Database.close(c);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         }
     }
 }

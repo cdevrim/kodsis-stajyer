@@ -8,9 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by scinkir on 25.06.2015.
- */
+
 public class KullaniciDao {
 
     public boolean  girisYap(Kullanici kullanici){
