@@ -31,13 +31,13 @@ public class CustomerDaoTest {
     public void testInsertCustomer(){
 
         Customer customer = new Customer();
-        customer.setFirstName("Ahmet"+Math.random());
+        customer.setFirstName("Mehmet Test"+Math.random());
         customer.setLastName("Tek"+Math.random());
         customer.setCreateUserId(1L);
         customer.setCreateDate(new Date());
         customer.setCreditCard(123456);
         customer.setPhone("5555555555");
-        customer.setGender("ERKEK");
+        customer.setGender("MALE");
         customer.setEmail("örek@gmail.com");
         customer.setBirthDate(new Date());
 
@@ -47,10 +47,7 @@ public class CustomerDaoTest {
     @Test
     public void testCustomerDelete(){
 
-        customerDAO.delete(32L); // sonuna L koyunca java da Long oluyor
-        //32 silinince tekrar 32 bulamaz yani onu için tek tek test edebilirsin,
-        //test yazarak hızlı bir şeykilde JDBC öğrenebilirsin..
-
+        customerDAO.delete(33L);
     }
 
     @Test
@@ -60,6 +57,13 @@ public class CustomerDaoTest {
         customer.setId(16L);
         customer.setFirstName("Test"+Math.random());
         customer.setLastName("Test"+Math.random());
+        customer.setCreateUserId(1L);
+        customer.setCreateDate(new Date());
+        customer.setCreditCard(1);
+        customer.setPhone("1");
+        customer.setGender("TEST");
+        customer.setEmail("test@gmail.com");
+        customer.setBirthDate(new Date());
 
         customerDAO.update(customer);
     }

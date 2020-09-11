@@ -5,9 +5,6 @@ import org.junit.Test;
 
 import java.sql.Connection;
 
-/**
- * Created by scinkir on 19.07.2017.
- */
 public class KullaniciDaoTest {
 
     @Test

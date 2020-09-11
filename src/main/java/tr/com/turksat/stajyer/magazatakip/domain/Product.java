@@ -1,13 +1,12 @@
 package tr.com.turksat.stajyer.magazatakip.domain;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.time.LocalDateTime;
 
 public class Product {
 
     private Long id;
     private String productName;
-    private BigDecimal price;
+    private Double price;
     private  Date createDate;
     private Long createUserId;
     private Date productDate;
@@ -16,7 +15,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String productName, BigDecimal price, Date createDate, Long createUserId, Date productDate, Long productDescriptionId) {
+    public Product(Long id, String productName, Double price, Date createDate, Long createUserId, Date productDate, Long productDescriptionId) {
         this.id = id;
         this.productName = productName;
         this.price = price;
@@ -33,8 +32,8 @@ public class Product {
     public String getProductName() {return productName;}
     public void setProductName(String productName) {this.productName = productName;}
 
-    public BigDecimal getPrice() {return price;}
-    public void setPrice(BigDecimal price) {this.price = price;}
+    public Double getPrice() {return price;}
+    public void setPrice(double price) {this.price = price;}
 
     public Date getCreateDate() {return createDate;}
     public void setCreateDate(Date createDate) {this.createDate = createDate;}

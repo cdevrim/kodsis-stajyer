@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class CustomerDAO {
 
 
@@ -128,10 +129,17 @@ public class CustomerDAO {
 
         try{
 
-            ps = c.prepareStatement("update customer set first_name= ?, last_name = ? where id= ?");
+            ps = c.prepareStatement("update customer set first_name= ?, last_name = ?, email= ?, credit_card= ? , birth_date= ? ,gender= ? , phone=? , create_date= ?, create_user_id= ? where id= ?");
             ps.setString(1,customer.getFirstName());
             ps.setString(2,customer.getLastName());
-            ps.setLong(3,customer.getId());
+            ps.setString(3,customer.getEmail());
+            ps.setInt(4,customer.getCreditCard());
+            ps.setDate(5,new java.sql.Date(customer.getBirthDate().getTime()));
+            ps.setString(6,customer.getGender());
+            ps.setString(7,customer.getPhone());
+            ps.setDate(8,new java.sql.Date(customer.getCreateDate().getTime()));
+            ps.setLong(9,customer.getCreateUserId());
+            ps.setLong(10,customer.getId());
 
             ps.executeUpdate();
 
