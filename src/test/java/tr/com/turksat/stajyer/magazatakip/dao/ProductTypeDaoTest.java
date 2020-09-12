@@ -27,7 +27,7 @@ public class ProductTypeDaoTest {
         ProductType productType = new ProductType();
         productType.setCreateUserId(1L);
         productType.setCreateDate(new Date());
-        productType.setProductTypeName("Test");
+        productType.setProductTypeName("Test"+Math.random());
 
        productTypeDAO.insert(productType);
     }
@@ -35,7 +35,7 @@ public class ProductTypeDaoTest {
     @Test
     public void testProductTypeDelete(){
 
-     productTypeDAO.delete(13L);
+     productTypeDAO.delete(999999999999999L);
     }
 
     @Test

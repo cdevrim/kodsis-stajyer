@@ -15,8 +15,32 @@ import java.util.List;
 public class ProductDescriptionDAO {
 
 
-    public ProductDescriptionDAO(){
+    public ProductDescriptionDAO(){ }
 
+    public ProductDescription getProductDescriptionById(Long id){
+        Connection c = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        ProductDescription productDescription;
+
+        try {
+            c = Database.getInstance().getConnection();
+            ps = c.prepareStatement("select * from stajyer.product_description where id = ?");
+            ps.setLong(1,id);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                productDescription = new ProductDescription();
+                productDescription.setId(rs.getLong("id"));
+                productDescription.setProductTypeId(rs.getLong("product_type_id"));
+                productDescription.setProductDescriptionName(rs.getString("product_description_name"));
+                //artık burda kullanmak için ne lazımsa set etmen gerek, bize adı yeteri,
+                return productDescription;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
     }
 
 

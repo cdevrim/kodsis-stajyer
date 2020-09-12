@@ -76,6 +76,11 @@
             <version>${jsf.extension.version}</version>
         </dependency>
 
+        <!-- Burada comment için böyle yapman lazım
+        yani bu yapı olarak XML olduğu için bu tagler xml comment oluyor
+        junit dependecy burada
+        -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

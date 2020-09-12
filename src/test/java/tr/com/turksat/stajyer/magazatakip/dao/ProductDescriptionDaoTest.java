@@ -39,7 +39,7 @@ public class ProductDescriptionDaoTest {
     @Test
     public void testProductDescriptionDelete(){
 
-        productDescriptionDAO.delete(12L);
+        productDescriptionDAO.delete(99999999999L);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ProductDescriptionDaoTest {
 
         ProductDescription productDescription = new ProductDescription();
         productDescription.setId(5L);
-        productDescription.setProductDescriptionName("Iphone TEST 8 White 32GB"+Math.random());
+        productDescription.setProductDescriptionName("Iphone 8 32GB"+Math.random());
         productDescription.setCreateDate(new Date());
         productDescription.setCreateUserId(1L);
         productDescription.setProductTypeId(  12L);

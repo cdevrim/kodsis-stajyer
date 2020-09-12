@@ -38,7 +38,7 @@ public class CustomerDaoTest {
         customer.setCreditCard(123456);
         customer.setPhone("5555555555");
         customer.setGender("MALE");
-        customer.setEmail("örek@gmail.com");
+        customer.setEmail("örek"+Math.random()+"@gmail.com");
         customer.setBirthDate(new Date());
 
         customerDAO.insert(customer);

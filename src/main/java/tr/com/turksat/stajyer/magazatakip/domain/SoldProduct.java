@@ -12,12 +12,8 @@ public class SoldProduct {
     private Long createUserId;
     private Long productId;
 
-
-    public SoldProduct() {
-
-
-    }
-
+    //genelde default bu boş constructor u oluşturmayı alışkanlık haline getir.
+    public SoldProduct() { }
 
     public SoldProduct(Long id, Date soldDate, Long customerAccountId, Date createDate, Long createUserId, Long productId) {
         this.id = id;

@@ -69,7 +69,8 @@ public class ProductTypeFeatureDAO {
 
         Connection c = Database.getInstance().getConnection();
         PreparedStatement ps;
-        String sqlInsert = "insert into stajyer.product_type_feature(value,create_date,create_user_id,product_type_id,_feature_id)\n ";
+        //burayı düzelt.
+        String sqlInsert = "insert into stajyer.product_type_feature(value,create_date,create_user_id,product_type_id,feature_id)\n ";
         sqlInsert += " values (?,?,?,?,?); \n";
 
         try{
@@ -119,7 +120,7 @@ public class ProductTypeFeatureDAO {
 
         try{
 
-            ps = c.prepareStatement("update product_type_feature set value = ?,create_date= ?,create_user_id= ?,product_type_id= ?,_feature_id= ? where id= ?");
+            ps = c.prepareStatement("update product_type_feature set value = ?,create_date= ?,create_user_id= ?,product_type_id= ?,feature_id= ? where id= ?");
             ps.setString(1,productTypeFeature.getValue());
             ps.setDate(2,new java.sql.Date(productTypeFeature.getCreateDate().getTime()));
             ps.setLong(3,productTypeFeature.getCreateUserId());

@@ -29,10 +29,10 @@ public class ProductTypeFeatureDaoTest {
     public void testInsertProductTypeFeature(){
 
         ProductTypeFeature productTypeFeature = new ProductTypeFeature();
-        productTypeFeature.setValue("TEST");
+        productTypeFeature.setValue("TEST"+Math.random());
         productTypeFeature.setCreateDate(new Date());
         productTypeFeature.setCreateUserId(2L);
-        productTypeFeature.setProductTypeId( (13L);
+        productTypeFeature.setProductTypeId(13L);
         productTypeFeature.setFeatureId(3L);
 
         productTypeFeatureDAO.insert(productTypeFeature);
@@ -46,7 +46,9 @@ public class ProductTypeFeatureDaoTest {
 
     @Test
     public void testProductTypeFeatureUpdate(){
+
         ProductTypeFeature productTypeFeature = new ProductTypeFeature();
+        productTypeFeature.setValue("Test123");
         productTypeFeature.setId(85L);
         productTypeFeature.setCreateDate(new Date());
         productTypeFeature.setCreateUserId(1L);

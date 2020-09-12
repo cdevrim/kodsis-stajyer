@@ -34,7 +34,7 @@ public class FeatureDaoTest {
     @Test
     public void testFeatureDelete(){
 
-        featureDAO.delete(1L); // sonuna L koyunca java da Long oluyor
+        featureDAO.delete(9999999L); // sonuna L koyunca java da Long oluyor -- bunlar kalsın mı sen mi silersin sonra?ben silerim
         //32 silinince tekrar 32 bulamaz yani onu için tek tek test edebilirsin,
         //test yazarak hızlı bir şeykilde JDBC öğrenebilirsin..
 
@@ -45,6 +45,7 @@ public class FeatureDaoTest {
 
         Feature feature = new Feature();
 
+        feature.setId(12L);
         feature.setName("Test"+Math.random());
 
 

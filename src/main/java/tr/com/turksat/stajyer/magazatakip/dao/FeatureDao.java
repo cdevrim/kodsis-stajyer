@@ -95,9 +95,10 @@ public class FeatureDao {
 
         try{
 
+            //2 tane soru işareti var yani parametre ama biri set edilmemiş
             ps = c.prepareStatement("update feature set name= ? where id= ?");
             ps.setString(1,feature.getName());
-
+            ps.setLong(2,feature.getId());
 
             ps.executeUpdate();
 

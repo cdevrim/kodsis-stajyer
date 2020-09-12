@@ -26,7 +26,7 @@ public class CustomerAccountDaoTest {
         CustomerAccount customerAccount = new CustomerAccount();
         customerAccount.setCustomerId(23L);
         customerAccount.setCreateDate(new Date());
-        customerAccount.setCreateUserId(12L);
+        customerAccount.setCreateUserId(1L);
         customerAccount.setBillingAddress("Yenimahalle");
 
         customerAccountDAO.insert(customerAccount);
@@ -35,7 +35,7 @@ public class CustomerAccountDaoTest {
     @Test
     public void testCustomerAccountDelete(){
 
-        customerAccountDAO.delete(5L);
+        customerAccountDAO.delete(99999999999L);
 
     }
 

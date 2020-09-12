@@ -67,7 +67,8 @@ public class SoldProductDAO {
 
         Connection c = Database.getInstance().getConnection();
         PreparedStatement ps;
-        String sqlInsert = "insert into stajyer.customer(sold_date,customer_account_id,create_date,create_user_id,product_id)\n ";
+
+        String sqlInsert = "insert into stajyer.sold_product(sold_date,customer_account_id,create_date,create_user_id,product_id)\n ";
         sqlInsert += " values (?,?,?,?,?); \n";
 
         try{

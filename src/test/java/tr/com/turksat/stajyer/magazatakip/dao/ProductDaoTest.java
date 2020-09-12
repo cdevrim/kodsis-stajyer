@@ -4,23 +4,28 @@ package tr.com.turksat.stajyer.magazatakip.dao;
 
 import org.junit.Test;
 import tr.com.turksat.stajyer.magazatakip.domain.Product;
+import tr.com.turksat.stajyer.magazatakip.domain.ProductDescription;
+
 import java.util.Date;
 import java.util.List;
 
 public class ProductDaoTest {
 
     ProductDAO productDAO = new ProductDAO();
+    ProductDescriptionDAO productDescriptionDAO = new ProductDescriptionDAO();
 
-    @Test
+    @Test //test başlatan annotation
     public void testGetProduct(){
         System.out.println("test");
 
         List<Product> productList = productDAO.getProduct();
         for(Product product : productList){
+            ProductDescription pd = productDescriptionDAO.getProductDescriptionById(product.getProductDescriptionId());
+
             System.out.println("ID : "+product.getId()+" Product Name : "+product.getProductName()+
                     " Price: " + product.getPrice()+ " Create Date: " + product.getCreateDate() +
                     " Create User ID: " + product.getCreateUserId() + " Product Date" + product.getProductDate()+
-                    " Product Description ID: " + product.getProductDescriptionId() );
+                    " Product Description Name: " + pd.getProductDescriptionName());
         }
     }
 
@@ -41,7 +46,7 @@ public class ProductDaoTest {
     @Test
     public void testProductDelete(){
 
-        productDAO.delete(10L);
+        productDAO.delete(999999999L);
     }
 
     @Test

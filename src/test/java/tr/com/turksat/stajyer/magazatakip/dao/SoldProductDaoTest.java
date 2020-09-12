@@ -30,7 +30,7 @@ public class SoldProductDaoTest {
 
         SoldProduct soldProduct = new SoldProduct();
         soldProduct.setSoldDate(new Date());
-        soldProduct.setCustomerAccountId( (12L);
+        soldProduct.setCustomerAccountId(10L);
         soldProduct.setCreateDate(new Date());
         soldProduct.setCreateUserId(1L);
         soldProduct.setProductId(2L);
