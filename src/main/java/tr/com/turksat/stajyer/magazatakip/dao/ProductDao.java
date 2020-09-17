@@ -1,37 +1,35 @@
 package tr.com.turksat.stajyer.magazatakip.dao;
 
-import tr.com.turksat.stajyer.magazatakip.domain.ProductType;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import tr.com.turksat.stajyer.magazatakip.domain.Product;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductTypeDao {
-    public ProductTypeDao() { }
+public class ProductDao {
 
-    //örnek olarak elimin altında Kullanıcı Dao var
-    //bundan örnek larak ProductType nesnesine ait tüm db işlemlerini
-    //Yapacak olan sınıf bu veritabanı ile harberleşmeyi bu sağlıuyor
-    //Data Access Object = DAO
-    //DAO katmanı diye geçer
-    public List<ProductType> getProductTypeList() {
+    public ProductDao() { }
+
+    public List<Product> getProductList() {
         Connection con = null;
-        List<ProductType> list = new ArrayList<>();
-        ProductType productType = null;
+        List<Product> list = new ArrayList<>();
+        Product product = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("select * from stajyer.product_type");
+            ps = con.prepareStatement("select * from stajyer.product");
             rs = ps.executeQuery();
             while (rs.next()) {
-                productType = new ProductType();
-                productType.setId(rs.getLong("id"));
-                productType.setName(rs.getString("name"));
-                list.add(productType);
+                product = new Product();
+                product.setId(rs.getLong("id"));
+                product.setPrice(rs.getFloat("price"));
+                product.setProductionDate(rs.getTimestamp("production_date"));
+                product.setDateOfSale(rs.getTimestamp("date_of_sale"));
+                product.setDescriptionId(rs.getLong("description_id"));
+                product.setAccountId(rs.getLong("account_id"));
+                list.add(product);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -52,15 +50,19 @@ public class ProductTypeDao {
         return list;
     }
 
-    public void createProductType(String productTypeName){
+    public void createProduct(Float price, Timestamp production_date, Timestamp date_of_sale, Long description_id, Long account_id){
         Connection con = null;
-        ProductType productType = null;
+        Product product = null;
         PreparedStatement ps = null;
 
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("insert into stajyer.product_type(name) values (?)");
-            ps.setString(1,productTypeName);
+            ps = con.prepareStatement("insert into stajyer.product(price, production_date, date_of_sale, description_id, account_id) values (?,?,?,?,?)");
+            ps.setFloat(1,price);
+            ps.setTimestamp(2,production_date);
+            ps.setTimestamp(3,date_of_sale);
+            ps.setLong(4,description_id);
+            ps.setLong(5,account_id);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -76,16 +78,20 @@ public class ProductTypeDao {
         }
     }
 
-    public void updateProductType(Long id,String name){
+    public void updateProduct(Long id, Float price, Timestamp production_date, Timestamp date_of_sale, Long description_id, Long account_id){
         Connection con = null;
-        ProductType productType = null;
+        Product product = null;
         PreparedStatement ps = null;
 
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("update stajyer.product_type set name = ? where id = ?");
-            ps.setString(1,name);
-            ps.setLong(2,id);
+            ps = con.prepareStatement("update stajyer.product set price = ?, production_date = ?, date_of_sale = ?, description_id = ?, account_id = ? where id = ?");
+            ps.setFloat(1,price);
+            ps.setTimestamp(2,production_date);
+            ps.setTimestamp(3,date_of_sale);
+            ps.setLong(4,description_id);
+            ps.setLong(5,account_id);
+            ps.setLong(6,id);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -101,14 +107,14 @@ public class ProductTypeDao {
         }
     }
 
-    public void deleteProductType(Long id){
+    public void deleteProduct(Long id){
         Connection con = null;
-        ProductType productType = null;
+        Product product = null;
         PreparedStatement ps = null;
 
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("delete from stajyer.product_type where id = ?");
+            ps = con.prepareStatement("delete from stajyer.product where id = ?");
             ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException throwables) {
@@ -124,5 +130,4 @@ public class ProductTypeDao {
             }
         }
     }
-
 }

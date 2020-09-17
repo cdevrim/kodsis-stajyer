@@ -8,10 +8,7 @@ public class ProductTypeFeature {
 
 
 
-    public ProductTypeFeature()
-    {
-
-    }
+    public ProductTypeFeature() { }
 
     public Long getId() {
         return id;

@@ -58,7 +58,7 @@ public class ProductTypeDaoTest {
     public void testGetProductTypeList(){
         List<ProductType> list = productTypeDao.getProductTypeList();
         for(ProductType productType : list){
-            System.out.println("ID : "+productType.getId()+" Name : "+productType.getName());
+            System.out.println("Id : " + productType.getId() + " Name : " + productType.getName());
         }
     }
 
@@ -66,12 +66,12 @@ public class ProductTypeDaoTest {
     public void testCreateProductType(){
         productTypeDao.createProductType("Test"+Math.random());
     }
-    @Test
+    //@Test
     public void testUpdateProductType(){
         productTypeDao.updateProductType(6L,"Test"+Math.random());
     }
 
-    @Test
+    //@Test
     public void testDeleteProductType(){
         productTypeDao.deleteProductType(6L);
     }

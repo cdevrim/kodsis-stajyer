@@ -1,10 +1,12 @@
 package tr.com.turksat.stajyer.magazatakip.domain;
 
+import java.sql.Timestamp;
+
 public class Product {
     private Long id;
     private float price;
-    private String productionDate;
-    private String dateOfSale;
+    private Timestamp productionDate;
+    private Timestamp dateOfSale;
     private Long descriptionId;
     private Long accountId;
 
@@ -30,19 +32,19 @@ public class Product {
         this.price = price;
     }
 
-    public String getProductionDate() {
+    public Timestamp getProductionDate() {
         return productionDate;
     }
 
-    public void setProductionDate(String productionDate) {
+    public void setProductionDate(Timestamp productionDate) {
         this.productionDate = productionDate;
     }
 
-    public String getDateOfSale() {
+    public Timestamp getDateOfSale() {
         return dateOfSale;
     }
 
-    public void setDateOfSale(String dateOfSale) {
+    public void setDateOfSale(Timestamp dateOfSale) {
         this.dateOfSale = dateOfSale;
     }
 

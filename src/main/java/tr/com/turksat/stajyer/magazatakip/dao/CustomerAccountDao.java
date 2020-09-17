@@ -1,7 +1,6 @@
 package tr.com.turksat.stajyer.magazatakip.dao;
 
-import tr.com.turksat.stajyer.magazatakip.domain.ProductType;
-
+import tr.com.turksat.stajyer.magazatakip.domain.CustomerAccount;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,29 +8,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductTypeDao {
-    public ProductTypeDao() { }
+public class CustomerAccountDao {
 
-    //örnek olarak elimin altında Kullanıcı Dao var
-    //bundan örnek larak ProductType nesnesine ait tüm db işlemlerini
-    //Yapacak olan sınıf bu veritabanı ile harberleşmeyi bu sağlıuyor
-    //Data Access Object = DAO
-    //DAO katmanı diye geçer
-    public List<ProductType> getProductTypeList() {
+    public CustomerAccountDao() { }
+
+    public List<CustomerAccount> getCustomerAccountList() {
         Connection con = null;
-        List<ProductType> list = new ArrayList<>();
-        ProductType productType = null;
+        List<CustomerAccount> list = new ArrayList<>();
+        CustomerAccount customerAccount = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("select * from stajyer.product_type");
+            ps = con.prepareStatement("select * from stajyer.customer_account");
             rs = ps.executeQuery();
             while (rs.next()) {
-                productType = new ProductType();
-                productType.setId(rs.getLong("id"));
-                productType.setName(rs.getString("name"));
-                list.add(productType);
+                customerAccount = new CustomerAccount();
+                customerAccount.setId(rs.getLong("id"));
+                customerAccount.setAccountName(rs.getString("account_name"));
+                customerAccount.setBillingAddress(rs.getString("billing_address"));
+                customerAccount.setCustomerId(rs.getLong("customer_id"));
+                list.add(customerAccount);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -52,15 +49,17 @@ public class ProductTypeDao {
         return list;
     }
 
-    public void createProductType(String productTypeName){
+    public void createCustomerAccount(String account_name, String billing_address, Long customer_id){
         Connection con = null;
-        ProductType productType = null;
+        CustomerAccount customer_account = null;
         PreparedStatement ps = null;
 
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("insert into stajyer.product_type(name) values (?)");
-            ps.setString(1,productTypeName);
+            ps = con.prepareStatement("insert into stajyer.customer_account(account_name, billing_address, customer_id) values (?,?,?)");
+            ps.setString(1,account_name);
+            ps.setString(2,billing_address);
+            ps.setLong(3,customer_id);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -76,16 +75,18 @@ public class ProductTypeDao {
         }
     }
 
-    public void updateProductType(Long id,String name){
+    public void updateCustomerAccount(Long id, String account_name, String billing_address, Long customer_id){
         Connection con = null;
-        ProductType productType = null;
+        CustomerAccount customerAccount = null;
         PreparedStatement ps = null;
 
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("update stajyer.product_type set name = ? where id = ?");
-            ps.setString(1,name);
-            ps.setLong(2,id);
+            ps = con.prepareStatement("update stajyer.customer_account set account_name = ?, billing_address = ?, customer_id = ? where id = ?");
+            ps.setString(1,account_name);
+            ps.setString(2,billing_address);
+            ps.setLong(3,customer_id);
+            ps.setLong(4,id);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -101,14 +102,14 @@ public class ProductTypeDao {
         }
     }
 
-    public void deleteProductType(Long id){
+    public void deleteCustomerAccount(Long id){
         Connection con = null;
-        ProductType productType = null;
+        CustomerAccount customerAccount = null;
         PreparedStatement ps = null;
 
         try {
             con = Database.getInstance().getConnection();
-            ps = con.prepareStatement("delete from stajyer.product_type where id = ?");
+            ps = con.prepareStatement("delete from stajyer.customer_account where id = ?");
             ps.setLong(1,id);
             ps.executeUpdate();
         } catch (SQLException throwables) {
@@ -124,5 +125,4 @@ public class ProductTypeDao {
             }
         }
     }
-
 }
