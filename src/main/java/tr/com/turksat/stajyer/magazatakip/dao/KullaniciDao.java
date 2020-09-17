@@ -25,8 +25,10 @@ public class KullaniciDao {
             ps.setString(1, kullanici.getKullaniciAdi());
             ps.setString(2, kullanici.getSifre());
             ResultSet rs = ps.executeQuery();
+            //System.out.println("kulldao listeledsfadsf");
             if (rs.next()) // found
             {
+                //System.out.println("kulladi :"+rs.getString("kullanici_adi") + "Sifre :"+rs.getString("sifre"));
 
                 return true;
             }
@@ -52,7 +54,7 @@ public class KullaniciDao {
             ps = con.prepareStatement(
                     "select id, kullanici_adi from stajyer.tb_kullanici ");
             ResultSet rs = ps.executeQuery();
-            if (rs.next()) // found
+            if (rs.next()) // found while yaparsan 2 kulanıcıyı da bulur
             {
                 Kullanici kullanici = new Kullanici();
 

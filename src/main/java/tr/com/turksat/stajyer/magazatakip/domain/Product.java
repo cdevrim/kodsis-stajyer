@@ -1,16 +1,25 @@
 package tr.com.turksat.stajyer.magazatakip.domain;
 
 public class Product {
+    private Long id;
     private float price;
     private String productionDate;
     private String dateOfSale;
-    private int descriptionId;
-    private int accountId;
+    private Long descriptionId;
+    private Long accountId;
 
 
     public Product()
     {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public float getPrice() {
@@ -37,19 +46,19 @@ public class Product {
         this.dateOfSale = dateOfSale;
     }
 
-    public int getDescriptionId() {
+    public Long getDescriptionId() {
         return descriptionId;
     }
 
-    public void setDescriptionId(int descriptionId) {
+    public void setDescriptionId(Long descriptionId) {
         this.descriptionId = descriptionId;
     }
 
-    public int getAccountId() {
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 }

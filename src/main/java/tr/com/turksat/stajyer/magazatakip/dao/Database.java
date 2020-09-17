@@ -17,6 +17,8 @@ public class Database {
         return new Database();
     }
 
+    //Bu kısım JDBC ile belirtilen db ye yeni bir bağlantı sağlıyor,
+    //O db hangisi :) bizim dosyamızda verdiğimiz bilgileri
     public  Connection getConnection() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -39,7 +41,11 @@ public class Database {
         }
     }
 
-
+    /**
+     * Property dosyasından okuma yaparak bilgileri toplar
+     * verilen keywore karşılık gelenler mantığı ile çalışır
+     * @return
+     */
     public HashMap<String, String> getDbBilgileri()  {
         InputStream inputStream = null;
         HashMap<String, String> dbBilgileri = new HashMap<>();

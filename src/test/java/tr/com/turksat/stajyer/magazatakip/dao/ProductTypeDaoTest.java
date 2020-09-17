@@ -1,28 +1,26 @@
 package tr.com.turksat.stajyer.magazatakip.dao;
 
 import org.junit.Test;
+import tr.com.turksat.stajyer.magazatakip.domain.ProductType;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.List;
 
-public class ProductTypeTest {
+public class ProductTypeDaoTest {
 
     private ProductTypeDao productTypeDao = new ProductTypeDao();
 
-    //        con = Database.getInstance().getConnection();
-//        try(PreparedStatement ps2 =  con.prepareStatement("select * from stajyer.product_type");){
-//            System.out.println("ProductTypeTest listele1");
-//            rs = ps.executeQuery();
-//            while (rs.next()){
-//                System.out.println("id :"+rs.getLong("id") + "Name :"+rs.getString("name"));
-//            }
-//        }catch (Exception ex){
-//
-//        }
-
     //Exception handling
+    //Zaten burada benzer yapmışsın sen :) ama dao ile iligli
+    //tüm işlemler dao tarafında kalmalı
+    //Bu senın yaptığın kısımdı, tüm db işlemlerini içerisinde barındıran
+    //böyle olmayacak ya bu kısımları kaldıralım mı?= kaldırabiliriz ya da yorum satırına alıp sonradan ben silebilirim
+    //tamam oöyle yapalım.
+    //Ctrl / seçili satıları coomment yapar veya
+    /*
+     --bu da yapar
+     */
+    /*
+    //TODO:SONRA KALDIR
     @Test
     public void listele()  {
         Connection con = null;
@@ -54,7 +52,33 @@ public class ProductTypeTest {
         }
         System.out.println("test");
     }
+    */
 
+    @Test
+    public void testGetProductTypeList(){
+        List<ProductType> list = productTypeDao.getProductTypeList();
+        for(ProductType productType : list){
+            System.out.println("ID : "+productType.getId()+" Name : "+productType.getName());
+        }
+    }
+
+    //@Test
+    public void testCreateProductType(){
+        productTypeDao.createProductType("Test"+Math.random());
+    }
+    @Test
+    public void testUpdateProductType(){
+        productTypeDao.updateProductType(6L,"Test"+Math.random());
+    }
+
+    @Test
+    public void testDeleteProductType(){
+        productTypeDao.deleteProductType(6L);
+    }
+
+
+    /*
+    TODO:SONRA KALDIR
     @Test
     //ProductType productType
     public void olustur(){
@@ -64,7 +88,9 @@ public class ProductTypeTest {
         //Veritabanına bağlantı
         //Insert into ProductType
     }
-
+*/
+/*
+    TODO:SONRA KALDIR
     @Test
     public void sil(){
         Connection con = null;
@@ -72,5 +98,7 @@ public class ProductTypeTest {
         //Veritabanına bağlantı
         //Delete from ProductType
     }
+
+ */
 
 }

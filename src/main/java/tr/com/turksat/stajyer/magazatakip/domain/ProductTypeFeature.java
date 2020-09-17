@@ -1,15 +1,24 @@
 package tr.com.turksat.stajyer.magazatakip.domain;
 
 public class ProductTypeFeature {
+    private Long id;
     private String value;
-    private int productTypeId;
-    private int featureId;
+    private Long productTypeId;
+    private Long featureId;
 
 
 
     public ProductTypeFeature()
     {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getValue() {
@@ -20,19 +29,19 @@ public class ProductTypeFeature {
         this.value = value;
     }
 
-    public int getProductTypeId() {
+    public Long getProductTypeId() {
         return productTypeId;
     }
 
-    public void setProductTypeId(int productTypeId) {
+    public void setProductTypeId(Long productTypeId) {
         this.productTypeId = productTypeId;
     }
 
-    public int getFeatureId() {
+    public Long getFeatureId() {
         return featureId;
     }
 
-    public void setFeatureId(int featureId) {
+    public void setFeatureId(Long featureId) {
         this.featureId = featureId;
     }
 }

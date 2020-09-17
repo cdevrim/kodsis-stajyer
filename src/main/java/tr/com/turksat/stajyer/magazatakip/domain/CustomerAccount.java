@@ -1,12 +1,20 @@
 package tr.com.turksat.stajyer.magazatakip.domain;
 
 public class CustomerAccount {
+    private Long id;
     private String accountName;
     private String billingAddress;
-    private int customerId;
+    private Long customerId;
 
-    public CustomerAccount()
-    { }
+    public CustomerAccount() { }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getAccountName() {
         return accountName;
@@ -24,11 +32,11 @@ public class CustomerAccount {
         this.billingAddress = billingAddress;
     }
 
-    public int getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Long customerId) {
         this.customerId = customerId;
     }
 }
