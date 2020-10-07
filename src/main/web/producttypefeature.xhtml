@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<head/>
+<h:body>
+    <ui:composition template="/WEB-INF/templates/baseLayout.xhtml">
+        <div class="page-title">Product Type Feature List</div>
+        <ui:define name="content">
+            <h:body>
+                <p:dataTable var="producttypefeature" value="#{productTypeFeatureController.productTypeFeatureList}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{producttypefeature.id}"/>
+                    </p:column>
+                    <p:column headerText="Value">
+                        <h:outputText value="#{producttypefeature.value}"/>
+                    </p:column>
+                    <p:column headerText="Product Type Id">
+                        <h:outputText value="#{producttypefeature.productTypeId}"/>
+                    </p:column>
+                    <p:column headerText="Feature Id">
+                        <h:outputText value="#{producttypefeature.featureId}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

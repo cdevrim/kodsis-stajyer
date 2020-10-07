@@ -4,20 +4,26 @@
     <h:form id="menuForm">
         <p:growl id="messages" autoUpdate="true"/>
         <p:accordionPanel multiple="true" speed="0.1"  activeIndex="0">
-            <p:tab title="Örnek Menü 1">
+            <p:tab title="Menu">   <!--            <p:tab title="Örnek Menü 1"> -->
                 <p:menu>
-                    <p:menuitem value="Giris" action="giris" ajax="false"/>
-                    <p:menuitem value="KullaniciListesi" action="kullaniciListesi" ajax="false"/>
+                    <p:menuitem value="Login" action="giris" ajax="false"/>
+                    <p:menuitem value="Users" action="kullaniciListesi" ajax="false"/>
+                    <p:menuitem value="Product Type" action="producttype" ajax="false"/>
+                    <p:menuitem value="Product Description" action="productdescription" ajax="false"/>
+                    <p:menuitem value="Product Type Feature" action="producttypefeature" ajax="false"/>
+                    <p:menuitem value="Product" action="product" ajax="false"/>
+                    <p:menuitem value="Customer" action="customer" ajax="false"/>
+                    <p:menuitem value="Customer Account" action="customeraccount" ajax="false"/>
                     <p:menuitem value="Ürün Tanımı" action="uruntanimi" ajax="false"/>
                 </p:menu>
             </p:tab>
 
-            <p:tab title="Örnek Menü 2">
-                <p:menu>
-                    <p:menuitem value="Giris" action="giris" ajax="false"/>
-                    <p:menuitem value="KullaniciListesi" action="kullaniciListesi" ajax="false"/>
-                </p:menu>
-            </p:tab>
+<!--            <p:tab title="Örnek Menü 2">-->
+<!--                <p:menu>-->
+<!--                    <p:menuitem value="Giris" action="giris" ajax="false"/>-->
+<!--                    <p:menuitem value="KullaniciListesi" action="kullaniciListesi" ajax="false"/>-->
+<!--                </p:menu>-->
+<!--            </p:tab>-->
 
         </p:accordionPanel>
     </h:form>

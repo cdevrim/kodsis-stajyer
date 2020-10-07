@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<head/>
+<h:body>
+    <ui:composition template="/WEB-INF/templates/baseLayout.xhtml">
+        <div class="page-title">Product List</div>
+        <ui:define name="content">
+            <h:body>
+                <p:dataTable var="product" value="#{productController.productList}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{product.id}"/>
+                    </p:column>
+                    <p:column headerText="Price">
+                        <h:outputText value="#{product.price}"/>
+                    </p:column>
+                    <p:column headerText="Production Date">
+                        <h:outputText value="#{product.productionDate}"/>
+                    </p:column>
+                    <p:column headerText="Date Of Sale">
+                        <h:outputText value="#{product.dateOfSale}"/>
+                    </p:column>
+                    <p:column headerText="Description Id">
+                        <h:outputText value="#{product.descriptionId}"/>
+                    </p:column>
+                    <p:column headerText="Account Id">
+                        <h:outputText value="#{product.accountId}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:body>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

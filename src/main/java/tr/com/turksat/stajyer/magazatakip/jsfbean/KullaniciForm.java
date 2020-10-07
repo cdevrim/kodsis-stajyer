@@ -120,7 +120,7 @@ public class KullaniciForm implements Serializable {
     public String kullaniciGiris() {
         KullaniciService service = new KullaniciService();
         if (service.kullaniciGiris(kullanici)) {
-            return "uruntanimi";
+            return "kullaniciListesi"; //return "uruntanimi";
         }
         return "giris";
     }

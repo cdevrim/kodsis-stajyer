@@ -1,7 +1,9 @@
 package tr.com.turksat.stajyer.magazatakip.domain;
 
 public class Feature {
+
     private Long id;
+
     private String name;
 
     public Feature()

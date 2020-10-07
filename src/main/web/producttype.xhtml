@@ -7,22 +7,19 @@
 <head/>
 <h:body>
     <ui:composition template="/WEB-INF/templates/baseLayout.xhtml">
-        <div class="page-title">Başlık</div>
+        <div class="page-title">Product Type List</div>
         <ui:define name="content">
-
             <h:body>
-                <p:dataTable var="kullanici" value="#{kullaniciForm.kullanicilar}">
+                <p:dataTable var="producttype" value="#{productTypeController.productTypeList}">
                     <p:column headerText="Id">
-                        <h:outputText value="#{kullanici.kullaniciAdi}"/>
+                        <h:outputText value="#{producttype.id}"/>
                     </p:column>
-                    <p:column headerText="Username">
-                        <h:outputText value="#{kullanici.adsoyad}"/>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{producttype.name}"/>
                     </p:column>
                 </p:dataTable>
-
             </h:body>
         </ui:define>
     </ui:composition>
 </h:body>
 </html>
-

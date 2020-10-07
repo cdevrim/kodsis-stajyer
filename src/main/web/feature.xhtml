@@ -7,19 +7,18 @@
 <head/>
 <h:body>
     <ui:composition template="/WEB-INF/templates/baseLayout.xhtml">
-        <div class="page-title">Başlık</div>
+        <div class="page-title">Feature List</div>
         <ui:define name="content">
-
             <h:body>
-                <p:dataTable var="kullanici" value="#{kullaniciForm.kullanicilar}">
+                <p:dataTable var="feature" value="#{featureController.featureList}"> <!-- buradaki var : variable demek özellikle farklı isim yaptım ki getterlarda get yazılmaz-->
                     <p:column headerText="Id">
-                        <h:outputText value="#{kullanici.kullaniciAdi}"/>
+                        <h:outputText value="#{feature.id}"/>
                     </p:column>
-                    <p:column headerText="Username">
-                        <h:outputText value="#{kullanici.adsoyad}"/>
+                    <p:column headerText="Feature Name">
+                        <h:outputText value="#{feature.name}"/>
                     </p:column>
+                    <!--CRUD örneklerinde buradada EKLE/Sil/Güncelle gibi butonlar koyarak işlem yaptırıyorlar-->
                 </p:dataTable>
-
             </h:body>
         </ui:define>
     </ui:composition>
